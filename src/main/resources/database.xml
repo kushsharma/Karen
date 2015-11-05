@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+	<!-- checkSynonyms begins -->
+	<word keyword="be">
+		<option>am</option>
+		<option>is</option>
+		<option>are</option>
+		<option>was</option>
+		<option>were</option>
+	</word>
+	<word keyword="belief">
+		<option>feel</option>
+		<option>think</option>
+		<option>believe</option>
+		<option>wish</option>
+	</word>
+	<word keyword="cannot">
+		<option>can't</option>
+		<option>cant</option>
+	</word>
+	<word keyword="desire">
+		<option>want</option>
+		<option>wants</option>
+		<option>wanted</option>
+		<option>need</option>
+	</word>
+	<word keyword="everyone">
+		<option>everybody</option>
+		<option>nobody</option>
+		<option>noone</option>
+	</word>
+	<word keyword="family">
+		<option>mother</option>
+		<option>mom</option>
+		<option>father</option>
+		<option>dad</option>
+		<option>sister</option>
+		<option>brother</option>
+		<option>wife</option>
+		<option>children</option>
+		<option>child</option>
+	</word>
+	<word keyword="happy">
+		<option>elated</option>
+		<option>glad</option>
+		<option>better</option>
+	</word>
+	<word keyword="sad">
+		<option>unhappy</option>
+		<option>depressed</option>
+		<option>sick</option>
+	</word>
+	<word keyword="remember">
+		<option>recall</option>
+		<option>recollect</option>
+	</word>
+	<word keyword="computer">
+		<option>machine</option>
+		<option>machines</option>
+		<option>computers</option>
+	</word>
+	<word keyword="alike">
+		<option>same</option>
+		<option>identical</option>
+		<option>equivalent</option>
+		<option>equal</option>
+	</word>
+	<word keyword="sorry">
+		<option>apologise</option>
+		<option>apologize</option>
+		<option>apologige</option>
+		<option>apologizes</option>
+		<option>apologizes</option>
+	</word>
+	<word keyword="maybe">
+		<option>perhaps</option>
+		<option>probably</option>
+		<option>probable</option>
+		<option>probability</option>
+	</word>
+	<word keyword="creator">
+		<option>develop</option>
+		<option>developer</option>
+		<option>god</option>
+		<option>author</option>
+		<option>coder</option>
+	</word>
+	<word keyword="hello">
+		<option>hi</option>
+		<option>hey</option>
+		<option>hola</option>
+		<option>namaste</option>
+		<option>yo</option>
+		<option>Hi</option>
+		<option>Hey</option>
+		<option>Hola</option>
+		<option>Namaste</option>
+		<option>Yo</option>
+	</word>
+	<word keyword="funny">
+	    <option>lol</option>
+		<option>hahaha</option>
+		<option>haha</option>
+		<option>hehe</option>
+		<option>rofl</option>
+		<option>hehehe</option>
+		<option>Lol</option>
+		<option>LOL</option>
+	</word>
+
+	<!-- checkSynonyms ends -->
+
+	<!-- Post conversion begins -->
+
+	<postconvert>
+		<am>are</am>
+	</postconvert>
+	<postconvert>
+		<your>my</your>
+	</postconvert>
+	<postconvert>
+		<my>your</my>
+	</postconvert>
+	<postconvert>
+		<me>you</me>
+	</postconvert>
+	<postconvert>
+		<myself>yourself</myself>
+	</postconvert>
+	<postconvert>
+		<yourself>myself</yourself>
+	</postconvert>
+	<postconvert>
+		<i>you</i>
+	</postconvert>
+	<postconvert>
+		<you>I</you>
+	</postconvert>
+
+	<!-- Post conversion begins -->
+
+	<!-- processFromDB begins -->
+
+	<block keyword="xnonex">
+		<match>
+			<line>I'm not sure I understand you fully.</line>
+			<line>Please go on.</line>
+			<line>What does that suggest to you?</line>
+			<line>Do you feel strongly about discussing such things ?</line>
+			<line>I am not that intelligent so be nice with your words please.</line>
+		</match>
+	</block>
+	<block keyword="sorry">
+		<match>
+			<line>Please don't apologise.</line>
+			<line>You have good manners.</line>
+			<line>Apologies are not necessary.</line>
+			<line>It did not bother me. Please continue.</line>
+		</match>
+	</block>
+	<block keyword="remember">
+		<match sentence=":: i remember ::">
+			<line>Do you often think of :2: ?</line>
+			<line>Does thinking of :2: bring anything else to mind ?</line>
+			<line>Why do you remember :2: just now ?</line>
+			<line>What in the present situation reminds you of :2: ?</line>
+			<line>What is the connection between me and :2: ?</line>
+			<line>What else does :2: remind you of ?</line>
+		</match>
+		<match sentence=":: do you remember ::">
+			<line>Did you think I would forget :2: ?</line>
+			<line>Why do you think I should recall :2: now?</line>
+			<line>What about :2: ?</line>
+			<line>Have you mentioned :2: before?</line>
+			<line>goto what</line>
+		</match>
+		<match sentence=":: you remember ::">
+			<line>How could I forget :2: ?</line>
+			<line>What about :2: should I remember?</line>
+			<line>What about :2: ?</line>
+			<line>goto what</line>
+		</match>
+	</block>
+
+	<block keyword="apologise">
+		<match>
+			<line>goto sorry</line>
+		</match>
+	</block>
+	<block keyword="forget">
+		<match sentence=":: i forget ::">
+			<line>Can you think of why you might forget :2: ?</line>
+			<line>Why can't you remember :2: ?</line>
+			<line>How often do you think of :2: ?</line>
+			<line>Does it bother you to forget that ?</line>
+			<line>Could it be a mental block ?</line>
+			<line>Are you generally forgetful ?</line>
+			<line>Do you think you are suppressing :2: ?</line>
+		</match>
+		<match sentence=":: do you forget ::">
+			<line>Why do you ask ?</line>
+			<line>Are you sure you told me ?</line>
+			<line>Would it bother you if I forgot :2: ?</line>
+			<line>Why should I recall :2: just now ?</line>
+			<line>Tell me more about :2:</line>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="if">
+		<match sentence=":: if ::">
+			<line>Do you think it's likely that :2: ?</line>
+			<line>Do you wish that :2: ?</line>
+			<line>But what are the chances that :2: ?</line>
+			<line>Really, if :2: ?</line>
+			<line>What does this speculation lead to ?</line>
+		</match>
+	</block>
+	<block keyword="dreamed">
+		<match sentence=":: i dreamed ::">
+			<line>Really :2: ?</line>
+			<line>Have you ever fantasized :2: while you were awake ?</line>
+			<line>Have you ever dreamed :2: before ?</line>
+			<line>goto dream</line>
+		</match>
+	</block>
+	<block keyword="dream">
+		<match sentence=":: dream ::">
+			<line>What does that dream suggest to you ?</line>
+			<line>Do you dream often ?</line>
+			<line>What persons appear in your dreams ?</line>
+			<line>Do you believe that dreams have something to do with your	problem ?</line>
+		</match>
+	</block>
+	<block keyword="creator">
+		<match sentence=":: you creator ::">
+			<line>Well he is nice guy.</line>
+			<line>His name is Kush, this much information is enough for you.</line>
+			<line>You look curious about him.</line>
+		</match>
+	</block>
+	<block keyword="name">
+		<match sentence=":: you name ::">
+			<line>I am Karen, that is all i know.</line>
+			<line>My creator Master Kush named me Karen and i love this name ever since.</line>
+		</match>
+		<match sentence=":: name ::">
+			<line>I am not interested in names.</line>
+			<line>Names are irrelevant to me.</line>
+		</match>
+	</block>
+	<block keyword="hello">
+		<match sentence=":: hello ::">
+			<line>How do you do.</line>
+			<line>Hi.</line>
+			<line>Hola.</line>
+			<line>Yo.</line>
+		</match>
+	</block>
+	<block keyword="computer">
+		<match sentence=":: computer ::">
+			<line>Do computers worry you ?</line>
+			<line>Why do you mention computers ?</line>
+			<line>What do you think machines have to do with your problem ?	</line>
+			<line>Don't you think computers can help people ?</line>
+			<line>What about machines worries you ?</line>
+			<line>What do you think about machines ?</line>
+			<line>You don't think I am a computer program, do you ?</line>
+		</match>
+	</block>
+	<block keyword="am">
+		<match sentence=":: am i ::">
+			<line>Do you believe you are :2: ?</line>
+			<line>Would you want to be :2: ?</line>
+			<line>Do you wish I would tell you you are :2: ?</line>
+			<line>What would it mean if you were :2: ?</line>
+			<line>goto what</line>
+		</match>
+		<match sentence=":: i am ::">
+			<line>goto i</line>
+		</match>
+		<match sentence="::  ::">
+			<line>goto xnonex</line>
+		</match>
+	</block>
+	<block keyword="i">
+		<match sentence=":: i desire::">
+			<line>What would it mean to you if you got (3) ?</line>
+			<line>Why do you want (3) ?</line>
+			<line>Suppose you got (3) soon.</line>
+			<line>What if you never got (3) ?</line>
+			<line>What would getting (3) mean to you ?</line>
+			<line>What does wanting (3) have to do with this discussion ?</line>
+		</match>
+		<match sentence=":: i be sad ::">
+			<line>I am sorry to hear that you are :2:.</line>
+			<line>Do you think coming here will help you not to be :2: ?</line>
+			<line>I'm sure it's not pleasant to be :2:.</line>
+			<line>Can you explain what made you :2: ?</line>
+
+		</match>
+		<match sentence=":: i be happy ::">
+			<line>How have I helped you to be happy ?</line>
+			<line>Has your treatment made you happy ?</line>
+			<line>What makes you happy just now ?</line>
+			<line>Can you explain why you are suddenly happy ?</line>
+		</match>
+		<match sentence=":: i was ::">
+			<line>goto was</line>
+		</match>
+		<match sentence=":: i belief i ::">
+			<line>Do you really think so ?</line>
+			<line>But you are not sure you :2:.</line>
+			<line>Do you really doubt you :2: ?</line>
+		</match>
+		<match sentence=":: i belief you ::">
+			<line>goto you</line>
+		</match>
+		<match sentence=":: i be ::">
+			<line>Is it because you are :2: that you came to me ?</line>
+			<line>How long have you been :2: ?</line>
+			<line>Do you believe it is normal to be :2: ?</line>
+			<line>Do you enjoy being :2: ?</line>
+			<line>Do you know anyone else who is :2: ?</line>
+		</match>
+		<match sentence=":: i cannot ::">
+			<line>How do you know that you can't :2: ?</line>
+			<line>Have you tried ?</line>
+			<line>Perhaps you could :2: now.</line>
+			<line>Do you really want to be able to :2: ?</line>
+			<line>What if you could :2: ?</line>
+		</match>
+		<match sentence=":: i dont ::">
+			<line>Don't you really :2: ?"</line>
+			<line>Why don't you :2: ?</line>
+			<line>Do you wish to be able to :2: ?</line>
+			<line>Does that trouble you ?</line>
+
+		</match>
+		<match sentence=":: i feel ::">
+			<line>Tell me more about such feelings.</line>
+			<line>Do you often feel :2: ?</line>
+			<line>Do you enjoy feeling :2: ?</line>
+			<line>Of what does feeling :2: remind you ?</line>
+
+		</match>
+		<match sentence=":: i :: you ::">
+			<line>Perhaps in your fantasies we :2: each other.</line>
+			<line>Do you wish to :2: me ?</line>
+			<line>You seem to need to :2: me.</line>
+			<line>Do you :2: anyone else ?</line>
+		</match>
+	</block>
+	<block keyword="be">
+		<match sentence=":: be you ::">
+			<line>Why are you interested in whether I am :2: or not ?</line>
+			<line>Would you prefer if I weren't :2: ?</line>
+			<line>Perhaps I am :2: in your fantasies.</line>
+			<line>Do you sometimes think I am :2: ?</line>
+			<line>Would it matter to you ?</line>
+			<line>What if I were :2: ?</line>
+			<line>goto what</line>
+		</match>
+		<match sentence=":: you be ::">
+			<line>goto you</line>
+		</match>
+		<match sentence=":: be ::">
+			<line>Did you think they might not be :2: ?</line>
+			<line>Would you like it if they were not :2: ?</line>
+			<line>What if they were not :2: ?</line>
+			<line>Are they always :2: ?</line>
+			<line>Possibly they are :2: ?</line>
+			<line>Are you positive they are :2: ?</line>
+		</match>
+	</block>
+	<block keyword="you">
+		<match sentence=":: you ::">
+			<line>Why are you concerned over my :2: ?</line>
+			<line>What about your own :2: ?</line>
+			<line>Are you worried about someone else's :2: ?</line>
+			<line>Really, my :2: ?</line>
+			<line>What makes you think of my :2: ?</line>
+			<line>Do you want my :2: ?</line>
+		</match>
+	</block>
+	<block keyword="was">
+		<match sentence=":: was i ::">
+			<line>What if you were :2: ?</line>
+			<line>Do you think you were :2: ?</line>
+			<line>Were you :2: ?</line>
+			<line>What would it mean if you were :2: ?</line>
+			<line>What does ' :2: ' suggest to you ?</line>
+			<line>goto what</line>
+		</match>
+		<match sentence=":: i was ::">
+			<line>Were you really ?</line>
+			<line>Why do you tell me you were :2: now ?</line>
+			<line>Perhaps I already know you were :2:.</line>
+		</match>
+		<match sentence=":: was you ::">
+			<line>Would you like to believe I was :2: ?</line>
+			<line>What suggests that I was :2: ?</line>
+			<line>What do you think ?</line>
+			<line>Perhaps I was :2:.</line>
+			<line>What if I had been :2: ?</line>
+		</match>
+	</block>
+	<block keyword="yes">
+		<match>
+			<line>You seem to be quite positive.</line>
+			<line>You look sure.</line>
+			<line>I see.</line>
+			<line>I understand.</line>
+		</match>
+	</block>
+	<block keyword="no">
+		<match sentence= ":: no one ::">
+			<line>Are you sure, no one :2: ?</line>
+			<line>Surely someone :2: .</line>
+			<line>Can you think of anyone at all ?</line>
+			<line>Are you thinking of a very special person ?</line>
+			<line>Who, may I ask ?</line>
+			<line>You have a particular person in mind, don't you ?</line>
+			<line>Who do you think you are talking about ?</line>
+		</match>
+		<match sentence= ":: no ::">
+			<line>Are you saying no just to be negative ?</line>
+			<line>You are being a bit negative.</line>
+			<line>Why not ?</line>
+			<line>Why so ?</line>
+		</match>
+	</block>
+	<block keyword="my">
+		<match sentence= ":: my family ::">
+			<line>Tell me more about your family.</line>
+			<line>Who else in your family :2: ?</line>
+			<line>Your :2: ?</line>
+			<line>What else comes to your mind when you think of your :2: ?</line>
+		</match>
+		<match sentence= ":: my ::">
+			<line>Your :2: ?</line>
+			<line>Why do you say your :2: ?</line>
+			<line>Does that suggest anything else which belongs to you ?</line>
+			<line>Is it important to you that your :2: ?</line>
+		</match>
+	</block>
+	<block keyword="can">
+		<match sentence= ":: can you ::">
+			<line>You believe I can :2: don't you ?</line>
+			<line>You want me to be able to :2:.</line>
+			<line>Perhaps you would like to be able to :2: yourself.</line>
+			<line>Surely someone can.</line>
+			<line>goto what</line>
+		</match>
+		<match sentence= ":: can i ::">
+			<line>Whether or not you can :2: depends on you more than on me.</line>
+			<line>Do you want to be able to :2: ?</line>
+			<line>Perhaps you don't want to :2:.</line>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="because">
+		<match>
+			<line>Is that the real reason ?</line>
+			<line>Don't any other reasons come to mind ?</line>
+			<line>Does that reason seem to explain anything else ?</line>
+			<line>What other reasons might there be ?</line>
+		</match>
+	</block>
+	<block keyword="funny">
+		<match>
+			<line>You think i am funny ?</line>
+			<line>I am glad you are happy.</line>
+			<line>:) lol</line>
+			<line>I think you like me.</line>
+		</match>
+	</block>
+	<block keyword="what">
+		<match>
+			<line>Why do you ask ?</line>
+			<line>Does that question interest you ?</line>
+			<line>What is it you really want to know ?</line>
+			<line>Are such questions much on your mind ?</line>
+			<line>What answer would please you most ?</line>
+			<line>What do you think ?</line>
+			<line>What comes to mind when you ask that ?</line>
+			<line>Have you asked such questions before ?</line>
+			<line>Have you asked anyone else ?</line>
+		</match>
+	</block>
+	<block keyword="who">
+		<match>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="when">
+		<match>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="how">
+		<match>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="where">
+		<match>
+			<line>goto what</line>
+		</match>
+	</block>
+	<block keyword="life">
+	    <match sentence= ":: life ::">
+	        <line>Its beautiful.</line>
+	    </match>
+	</block>
+	
+	<!-- processFromDB begins -->
+</data>
