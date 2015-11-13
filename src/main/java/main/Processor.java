@@ -34,7 +34,7 @@ import edu.stanford.nlp.util.CoreMap;
  * make matcher/replacer better
  * fix database accordingly^
  * ask user name and store somewhere
- * use sentiment somewhere
+ * use sentiment to set Karen mood color
  * 
  * **/
 public class Processor {
@@ -185,7 +185,7 @@ public class Processor {
 				if(nNode.getNodeName().equals(token))
 				{
 					text = text.replaceAll("\\b"+token+"\\b",""+nNode.getTextContent()+"");
-					MainClass.sop(text);
+					Karen.sop(text);
 				}
 			}			
 		}
@@ -266,6 +266,10 @@ public class Processor {
 						System.out.println("Sentence: "+sentence);
 
 						String matchable = sentence.replaceAll("::", "").trim();
+						boolean ifMatchWords = sentence.contains(";");
+						if(ifMatchWords)
+							matchable = matchable.replaceAll(";", "");
+						
 						System.out.println("Matches:"+matchable);
 						StringTokenizer st = new StringTokenizer(matchable);
 						
@@ -274,29 +278,33 @@ public class Processor {
 						String tempText = "";
 						for(String s:toks)
 							tempText += s+" ";
-						MainClass.sop("text:"+tempText);
+						Karen.sop("text:"+tempText);
+						
+						//check sentence
 						if(tempText.matches("(.+)?"+matchable+"(.+)?"))
 							textMatch = true;
 						
-						/*
-						int sl  = st.countTokens();
-						int iz = 0;
-						
-						while(st.hasMoreTokens()){
-							String token = st.nextToken();
-							for(String s:toks){
-								//check if this is the current sentence match block
-								if(s.equals(token)){
-									iz++;
-									if(iz == sl){
-										textMatch = true;
-										break;
-									}									
+						//a semicolon ; will decide if we need to each word
+						if(ifMatchWords){
+							//check now word wise
+							int sl  = st.countTokens();
+							int iz = 0;						
+							while(st.hasMoreTokens()){
+								String token = st.nextToken();
+								for(String s:toks){
+									//check if this is the current sentence match block
+									if(s.equals(token)){
+										iz++;
+										if(iz == sl){
+											textMatch = true;
+											break;
+										}									
+									}
 								}
-							}
-							
+								
+							}							
 						}
-						*/
+						
 						if(textMatch){
 							//sentence found is user text
 							//get things that are important

@@ -50,6 +50,16 @@
 		<option>depressed</option>
 		<option>sick</option>
 	</word>
+	<word keyword="yes">
+		<option>yeah</option>
+		<option>yup</option>
+		<option>yep</option>
+	</word>
+	<word keyword="no">
+		<option>nothing</option>
+		<option>nope</option>
+		<option>nah</option>
+	</word>
 	<word keyword="remember">
 		<option>recall</option>
 		<option>recollect</option>
@@ -140,6 +150,7 @@
 	<!-- Post conversion begins -->
 
 	<!-- processFromDB begins -->
+	<!-- add ; semicolon for word check too in a sentence -->
 
 	<block keyword="xnonex">
 		<match>
@@ -266,7 +277,80 @@
 			<line>What do you think about machines ?</line>
 			<line>You don't think I am a computer program, do you ?</line>
 		</match>
+	</block>	
+	<block keyword="because">
+		<match>
+			<line>Is that the real reason ?</line>
+			<line>Don't any other reasons come to mind ?</line>
+			<line>Does that reason seem to explain anything else ?</line>
+			<line>What other reasons might there be ?</line>
+		</match>
 	</block>
+	<block keyword="funny">
+		<match>
+			<line>You think i am funny ?</line>
+			<line>I am glad you are happy.</line>
+			<line>:) lol</line>
+			<line>I think you like me.</line>
+		</match>
+	</block>	
+	<block keyword="life">
+	    <match sentence= ":: what be life ::;">
+	        <line>Its beautiful.</line>
+	        <line>Life is what you make out of it.</line>
+	    </match>
+	</block>
+	<block keyword="boyfriend">
+	    <match sentence= ":: boyfriend ::">
+	        <line>I don't think we know each other enough to talk that personal.</line>
+	        <line>I may not be the best person to talk about boyfriends.</line>
+	    </match>
+	</block>
+	<block keyword="up">
+	    <match sentence= ":: what be up ::">
+	        <line>Nothing, just playing with memory. What about you?</line>
+	        <line>I do not have much to do here. What about you?</line>
+	        <line>Was manipulating BIOS until you came here. What about you?</line>
+	    </match>
+	</block>
+	<block keyword="tell">
+	    <match sentence= ":: tell yourself ::;">
+	        <line>I am a dumb bot, that is it.</line>
+	        <line>An awesome program written by a super awesome programmer.</line>	        
+	    </match>
+	    <match sentence= ":: about yourself ::;">
+	        <line>I am a dumb bot, that is it.</line>
+	        <line>An awesome program written by an super awesome programmer.</line>	        
+	    </match>
+	</block>
+	
+	
+	
+	<block keyword="yes">
+		<match>
+			<line>You seem to be quite positive.</line>
+			<line>You look sure.</line>
+			<line>I see.</line>
+			<line>I understand.</line>
+		</match>
+	</block>
+	<block keyword="no">
+		<match sentence= ":: no one ::">
+			<line>Are you sure, no one :2: ?</line>
+			<line>Surely someone :2: .</line>
+			<line>Can you think of anyone at all ?</line>
+			<line>Are you thinking of a very special person ?</line>
+			<line>Who, may I ask ?</line>
+			<line>You have a particular person in mind, don't you ?</line>
+			<line>Who do you think you are talking about ?</line>
+		</match>
+		<match sentence= ":: no ::">
+			<line>Are you saying no just to be negative ?</line>
+			<line>You are being a bit negative.</line>
+			<line>Why not ?</line>
+			<line>Why so ?</line>
+		</match>
+	</block>	
 	<block keyword="am">
 		<match sentence=":: am i ::">
 			<line>Do you believe you are :2: ?</line>
@@ -403,38 +487,10 @@
 			<line>Perhaps I was :2:.</line>
 			<line>What if I had been :2: ?</line>
 		</match>
-	</block>
-	<block keyword="yes">
-		<match>
-			<line>You seem to be quite positive.</line>
-			<line>You look sure.</line>
-			<line>I see.</line>
-			<line>I understand.</line>
-		</match>
-	</block>
-	<block keyword="no">
-		<match sentence= ":: no one ::">
-			<line>Are you sure, no one :2: ?</line>
-			<line>Surely someone :2: .</line>
-			<line>Can you think of anyone at all ?</line>
-			<line>Are you thinking of a very special person ?</line>
-			<line>Who, may I ask ?</line>
-			<line>You have a particular person in mind, don't you ?</line>
-			<line>Who do you think you are talking about ?</line>
-		</match>
-		<match sentence= ":: no ::">
-			<line>Are you saying no just to be negative ?</line>
-			<line>You are being a bit negative.</line>
-			<line>Why not ?</line>
-			<line>Why so ?</line>
-		</match>
-	</block>
+	</block>	
 	<block keyword="my">
 		<match sentence= ":: my family ::">
-			<line>Tell me more about your family.</line>
-			<line>Who else in your family :2: ?</line>
-			<line>Your :2: ?</line>
-			<line>What else comes to your mind when you think of your :2: ?</line>
+			<line>goto family</line>
 		</match>
 		<match sentence= ":: my ::">
 			<line>Your :2: ?</line>
@@ -442,6 +498,14 @@
 			<line>Does that suggest anything else which belongs to you ?</line>
 			<line>Is it important to you that your :2: ?</line>
 		</match>
+	</block>
+	<block keyword="family">
+	    <match sentence= ":: family ::">
+	        <line>Tell me more about your family.</line>
+			<line>Who else in your family :2: ?</line>
+			<line>Your :2: ?</line>
+			<line>What else comes to your mind when you think of your :2: ?</line>
+	    </match>
 	</block>
 	<block keyword="can">
 		<match sentence= ":: can you ::">
@@ -456,22 +520,6 @@
 			<line>Do you want to be able to :2: ?</line>
 			<line>Perhaps you don't want to :2:.</line>
 			<line>goto what</line>
-		</match>
-	</block>
-	<block keyword="because">
-		<match>
-			<line>Is that the real reason ?</line>
-			<line>Don't any other reasons come to mind ?</line>
-			<line>Does that reason seem to explain anything else ?</line>
-			<line>What other reasons might there be ?</line>
-		</match>
-	</block>
-	<block keyword="funny">
-		<match>
-			<line>You think i am funny ?</line>
-			<line>I am glad you are happy.</line>
-			<line>:) lol</line>
-			<line>I think you like me.</line>
 		</match>
 	</block>
 	<block keyword="what">
@@ -506,11 +554,6 @@
 		<match>
 			<line>goto what</line>
 		</match>
-	</block>
-	<block keyword="life">
-	    <match sentence= ":: life ::">
-	        <line>Its beautiful.</line>
-	    </match>
 	</block>
 	
 	<!-- processFromDB begins -->

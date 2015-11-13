@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,13 +10,20 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 public class UserInterface extends JFrame{
 
-	private javax.swing.JTextArea displayArea;
+	private javax.swing.JTextPane displayArea;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField msgField;
     private javax.swing.JButton sendButton;
+    //private javax.swing.JTextPane screenText;
     
     String user_name = "You";
     Processor process;
@@ -29,18 +38,22 @@ public class UserInterface extends JFrame{
 
 	private void initEverything() {
 		jScrollPane1 = new javax.swing.JScrollPane();
-        displayArea = new javax.swing.JTextArea();
+        displayArea = new javax.swing.JTextPane();
+        //screenText =  new javax.swing.JTextPane();
         msgField = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
         JLabel jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        displayArea.setEditable(false);
-        displayArea.setColumns(20);
+        //displayArea.setEditable(false);
         displayArea.setFont(new java.awt.Font("Arial", 0, 16));
-        displayArea.setRows(5);
         displayArea.setMargin(new Insets(4, 4, 4, 4));
+        displayArea.setBorder(new EmptyBorder(new Insets(10, 10, 10, 10)));
+        //displayArea.setContentType("text/html");
+        //tPane.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+        //screenText.setMargin(new Insets(5, 5, 5, 5));
+        
         jScrollPane1.setViewportView(displayArea);
 
         msgField.requestFocusInWindow(); 
@@ -109,18 +122,31 @@ public class UserInterface extends JFrame{
 		
         
         initKatie();
+        
+		EventQueue.invokeLater(new Runnable() {
+
+			public void run() {
+				msgField.grabFocus();
+				msgField.requestFocus();// or inWindow
+			}
+		});
 	}
 
 	private void initKatie() {
-		showText("Hi!");		
+		showText("Hi!","Karen");		
 	}
 
 	protected void sendMessage(String text) {
 		if(text.isEmpty()) return;
 		
-		displayArea.setText(displayArea.getText() + "\n" + user_name+": " + text);
+		//displayArea.setText(displayArea.getText() + "\n" + user_name+": " + text);
+		showText(text, user_name);
+		
 		msgField.setText("");
 		process(text);
+		
+		msgField.grabFocus();
+		msgField.requestFocus();
 	}
 
 	private void process(String text) {
@@ -132,17 +158,68 @@ public class UserInterface extends JFrame{
 		System.out.println(line);
 
 		//if(!tok.isEmpty())
-		showText(line);
+		String senti = process.getSentiment(text);
 
-		String output = process.getSentiment(text);
-		
+		showText(line, "Karen",senti);
+
 		//showText("You look "+output+".");
 	}
 
-	private void showText(String text) {
-		displayArea.setText(displayArea.getText() + "\nKatie: " + text);
+	private void showText(String text, String name) {
+		showText(text, name, "Neutral");
+	}
+
+	private void showText(String text, String name, String senti) {
+
+		if(senti.equals("Positive")){
+			appendToPane(displayArea, text, name, Color.GREEN);			
+		}else if(senti.equals("Negative")){
+			appendToPane(displayArea, text, name, Color.RED);
+		}else if(senti.equals("Very Positive")){
+			appendToPane(displayArea, text, name, Color.ORANGE);
+		}else if(senti.equals("Very Negative")){
+			appendToPane(displayArea, text, name, Color.PINK);
+		}
+		else
+		{
+			appendToPane(displayArea, text, name, Color.BLACK);
+		}
+		
+		
+		//neutral
+		//displayArea.setText(displayArea.getText() + "\nKatie: " + text);
 	}
 	
+	private void appendToPane(JTextPane tp, String msg, String name, Color c)
+    {
+        StyleContext sc = StyleContext.getDefaultStyleContext();
+        AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
+        
+        aset = sc.addAttribute(aset, StyleConstants.FontFamily, "Lucida Console");
+        aset = sc.addAttribute(aset, StyleConstants.Alignment, StyleConstants.ALIGN_JUSTIFIED);
+        
+        aset = sc.addAttribute(aset, StyleConstants.Bold, true);
+        
+        if(name.equals("Karen"))
+            aset = sc.addAttribute(aset, StyleConstants.Italic, true);
+        else
+            aset = sc.addAttribute(aset, StyleConstants.Italic, false);
+
+        
+        //set name
+        int len = tp.getDocument().getLength();
+        tp.setCaretPosition(len);
+        tp.setCharacterAttributes(aset, false);
+        tp.replaceSelection("\n"+name+": ");
+        
+        aset = sc.addAttribute(aset, StyleConstants.Bold, false);
+        aset = sc.addAttribute(aset, StyleConstants.Italic, false);
+        //set msg
+        len = tp.getDocument().getLength();
+        tp.setCaretPosition(len);
+        tp.setCharacterAttributes(aset, false);
+        tp.replaceSelection(msg);
+    }
 	
 	
 }
